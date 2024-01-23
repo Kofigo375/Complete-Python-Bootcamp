@@ -5,3 +5,4 @@ values.append(-22)
 print(values)
 for i in range (len(values)):
     print(i ** 2)
+
