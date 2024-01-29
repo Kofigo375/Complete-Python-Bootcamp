@@ -38,20 +38,69 @@ class Deck:
         return self.all_cards.pop()
 
 
+
+class Player:
+
+    def __init__(self,name):
+        self.name = name
+        self.all_cards = []
+
+    def remove_one(self):
+        return self.all_cards.pop(0)
+
+    def add_cards(self, new_cards):
+        if type(new_cards) == type([]):
+            self.all_cards.extend(new_cards)
+        else:
+            self.all_cards.append(new_cards)
+
+    def __str__(self):
+        return f"Player {self.name} had {len(self.all_cards)} cards"
+
+
+## GAME SETUP
+player_one = Player("One")
+player_two = Player("Two")
+
 new_deck = Deck()
-print(new_deck.all_cards)
-first_card = new_deck.all_cards[0]
-last_card = new_deck.all_cards[-1]
-print(first_card)
-print(last_card)
-
-for card_object in new_deck.all_cards:
-    print(card_object)
-
 new_deck.shuffle()
-last_card = new_deck.all_cards[-1]
-print(last_card)
 
-my_card = new_deck.del_one()
-print(my_card)
-print(len(new_deck.all_cards))
+for x in range(26):
+    player_one.add_cards(new_deck.del_one())
+    player_two.add_cards(new_deck.del_one())
+
+print(player_two.all_cards[0])
+
+
+game_on = True
+
+## while game_on
+round_num = 0 
+while game_on:
+
+    round_num += 1
+    print(f"Round {round_num}")
+
+    if len(player_one.all_cards) == 0:
+        print("Player One, out of cards! Player Two Wins!")
+        game_on = False
+        break
+    if len(player_two.all_cards) == 0:
+        print("Player Two, out of cards! Player One Wins!")
+        game_on = False
+        break
+
+    ## START A NEW ROUND
+    player_one_cards = []
+    player_one_cards.append(player_one.remove_one())
+
+    player_two_cards = []
+    player_two_cards.append(player_two.remove_one())
+
+
+
+
+
+    # while at_war
+
+        
