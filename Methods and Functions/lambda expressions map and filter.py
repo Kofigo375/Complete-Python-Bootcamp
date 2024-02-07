@@ -12,11 +12,11 @@ for item in map(square, my_list):
 squared_list = list(map(square, my_list))
 print(squared_list)
 
-## filter() is quire analogous to map()
+## filter() is quite nalogous to map()
 ## the key difference is that the function inside
 ## the filter method/function must return a bool.
 
-def check_even(num):
+def check_even(num): 
     return num%2 == 0
 
 filtered_list = list(filter(check_even, my_list))
